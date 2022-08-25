@@ -18,7 +18,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    'element-ui/lib/theme-chalk/index.css'
+    'element-ui/lib/theme-chalk/index.css',
+    '@/assets/css/main.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -33,6 +34,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
+    '@nuxt/postcss8',
     // 解决 postcss 警告问题
     '@nuxtjs/style-resources',
     '@nuxt/postcss8'
@@ -56,6 +58,8 @@ export default {
     // 解决 postcss 警告问题
     postcss: {
       plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
       },
       preset: {
       }
