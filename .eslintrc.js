@@ -16,6 +16,9 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
-    'vue/multi-word-component-names': false
+    // https://eslint.vuejs.org/rules/
+    'vue/multi-word-component-names': ["warning", {
+      "ignores": []
+    }]
   }
 }
