@@ -24,7 +24,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    '@/plugins/axios'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -32,8 +33,6 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
     '@nuxt/postcss8',
     // 解决 postcss 警告问题
     '@nuxtjs/style-resources',
@@ -43,13 +42,24 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    proxy: true,
+    prefix: process.env.BASE_URL
+  },
+
+  proxy: {
+    [process.env.BASE_URL]: {
+      target: process.env.BROWSER_BASE_URL,
+      changeOrigin: true,
+      pathRewrite: {
+        [process.env.BASE_URL] : '/'
+      }
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
