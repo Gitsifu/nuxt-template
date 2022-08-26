@@ -1,19 +1,21 @@
 <template>
-  <layout-container>
-    <nuxt />
-  </layout-container>
+  <div>
+    <slot></slot>
+
+  </div>
 </template>
 
 <script>
 export default {
+  name: 'LayoutContainer',
   components: {},
   props: {},
   data () {
     return {}
   },
+  methods: {},
   mounted () {
-  },
-  methods: {}
+  }
 }
 </script>
 
